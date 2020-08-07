@@ -13,10 +13,12 @@ type Move struct {
 	Locations []int `json:"location"`
 }
 
+var idCounter = 0
 var roomExists = make(map[int]bool)
 var rooms = make(map[int]*websocket.Upgrader)
 var chatParticipants = make(map[int][]*websocket.Conn)
 var roomMoves = make(map[int][]Move)
+var allRooms []int
 
 func Websocket(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("here")
@@ -25,8 +27,10 @@ func Websocket(w http.ResponseWriter, r *http.Request) {
 	id, _ := strconv.Atoi(roomId)
 
 	if roomId == "" {
-		id, _ := strconv.Atoi(roomId)
+		id := idCounter
+		idCounter++
 		roomExists[id] = true
+		allRooms = append(allRooms, id)
 		newUpgrader := &websocket.Upgrader{
 			ReadBufferSize:  1024,
 			WriteBufferSize: 1024,

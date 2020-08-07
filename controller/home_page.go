@@ -1,10 +1,12 @@
 package controller
 
 import (
-	"fmt"
+	"encoding/json"
 	"net/http"
 )
 
 func HomePage(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Home page")
+	json, _ := json.Marshal(allRooms)
+
+	w.Write(json)
 }
