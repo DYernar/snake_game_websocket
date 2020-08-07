@@ -1,0 +1,1 @@
+web: ./snake_game
