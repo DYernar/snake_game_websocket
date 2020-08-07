@@ -73,7 +73,7 @@ func reader(conn *websocket.Conn, id int) {
 		}
 
 		var m Move
-
+		fmt.Println(p)
 		err = json.Unmarshal(p, &m)
 
 		roomMoves[id] = append(roomMoves[id], m)
