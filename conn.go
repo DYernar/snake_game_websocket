@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"snake_game/game"
 
 	"github.com/gorilla/websocket"
@@ -18,6 +19,7 @@ func (pc *playerConn) receiver() {
 		if err != nil {
 			break
 		}
+		fmt.Println(command)
 
 		pc.Player.Command(string(command))
 		pc.room.updateAll <- true
