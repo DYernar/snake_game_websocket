@@ -2,6 +2,14 @@
 
 
 [[projects]]
+  branch = "master"
+  digest = "1:39dc3a685179c3ae948e3a30fbb8ac3def337ff84c230b3ea6fd8b0085e2e45d"
+  name = "github.com/alehano/wsgame"
+  packages = ["utils"]
+  pruneopts = "UT"
+  revision = "23a644fc015cadd28670dab48fbf962592a24a1d"
+
+[[projects]]
   digest = "1:6d29f02f0f01c627c2be40fb7347669a9ff2aa215cb97747294c1d13ffa74bdd"
   name = "github.com/gorilla/websocket"
   packages = ["."]
@@ -21,6 +29,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/alehano/wsgame/utils",
     "github.com/gorilla/websocket",
     "github.com/rs/cors",
   ]

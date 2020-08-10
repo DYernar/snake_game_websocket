@@ -5,7 +5,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"snake_game/controller"
 
 	"github.com/rs/cors"
 )
@@ -18,8 +17,8 @@ func main() {
 	fmt.Println("Go websockets")
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/", controller.HomePage)
-	mux.HandleFunc("/ws", controller.Websocket)
+	mux.HandleFunc("/", HomePage)
+	mux.HandleFunc("/ws", Websocket)
 
 	handler := cors.Default().Handler(mux)
 
