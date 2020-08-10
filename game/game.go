@@ -3,8 +3,9 @@ package game
 import "log"
 
 type Player struct {
-	Name  string
-	Enemy *Player
+	Name     string
+	Enemy    *Player
+	Position []int
 }
 
 func NewPlayer(name string) *Player {
@@ -19,8 +20,8 @@ func (p *Player) Command(command string) {
 	log.Print("Command: '", command, "'received by player ", p.Name)
 }
 
-func (p *Player) GetState() string {
-	return "Game state for Player: " + p.Name
+func (p *Player) GetState() []int {
+	return p.Position
 }
 
 func (p *Player) GiveUp() {

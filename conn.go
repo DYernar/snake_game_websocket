@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"snake_game/game"
 
@@ -31,7 +32,8 @@ func (pc *playerConn) receiver() {
 func (pc *playerConn) sendState() {
 	go func() {
 		msg := pc.Player.GetState()
-		err := pc.ws.WriteMessage(websocket.TextMessage, []byte(msg))
+		json, _ := json.Marshal(msg)
+		err := pc.ws.WriteMessage(websocket.TextMessage, []byte(json))
 		if err != nil {
 			pc.room.leave <- pc
 			pc.ws.Close()
